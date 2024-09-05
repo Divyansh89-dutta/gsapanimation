@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ::selection {
+            color: white;
+            background: transparent;
+        }
+
+        html,
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            background-color: red;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            pointer-events: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .site-content {
+            position: absolute;
+        }
+
+        .nav {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 3em;
+        }
+
+        .links {
+            display: flex;
+            gap: 2em;
+        }
+
+        a {
+            text-decoration: none;
+            color: #fff;
+            font-family: "gilroy";
+            pointer-events: auto;
+        }
+
+        .loop a {
+            font-family: "gilroy";
+            text-transform: uppercase;
+        }
+
+        .hero-copy {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+        }
+
+        .hero-copy h1 {
+            font-size: 8vw;
+            color: #fff;
+            font-family: "gilroy";
+            text-transform: uppercase;
+            font-weight: 400;
+        }
+
+        .hero-copy p {
+            font-size: 2vw;
+            color: #fff;
+            font-family: "gilroy";
+            margin: 0.5em 0;
+        }
+
+        .cursor {
+            height: 25px;
+            width: 25px;
+            background-color: rgb(246, 247, 247);
+            border-radius: 50%;
+            position: fixed;
+            font-size: 4px;
+            color: rgb(239, 121, 82);
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor"></div>
+    <div class="site-content">
+        <video autoplay muted loop id="heroVideo">
+            <source src="videoplayback.webm" type="video/webm" />
+        </video>
+    </div>
+    <div class="container">
+        <div class="nav">
+            <div class="logo">
+                <a href="#">Divyansh</a>
+            </div>
+            <div class="links">
+                <a href="#">Project</a>
+                <a href="#">About Us</a>
+                <a href="#">Our services</a>
+                <a href="#">Our Incubators</a>
+                <a href="#">Contact</a>
+                <a href="#">Careers</a>
+            </div>
+        </div>
+        <div class="hero-copy">
+            <h1>Itachi Uchiha</h1>
+            <p>Moonlight</p>
+        </div>
+    </div>
+    <canvas id="draw"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var cursor = document.querySelector(".cursor")
+        document.addEventListener("mousemove", function (dets) {
+            gsap.to(cursor, {
+                x: dets.x,
+                y: dets.y,
+                duration: 1,
+                ease: "back.out(1.7)",
+            })
+        })
+        const canvas = document.querySelector("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.lineJoin = "round";
+        ctx.lineCap = "round";
+        ctx.lineWidth = 100;
+        ctx.globalCompositeOperation = "destination-out";
+
+        let isDrawing = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        function draw(e) {
+            if (!isDrawing) return; // Stop the function if not drawing
+            ctx.beginPath();
+            ctx.moveTo(lastX, lastY);
+            ctx.lineTo(e.clientX, e.clientY);
+            ctx.stroke();
+            [lastX, lastY] = [e.clientX, e.clientY];
+        }
+
+        canvas.addEventListener("mousedown", (e) => {
+            isDrawing = true;
+            [lastX, lastY] = [e.clientX, e.clientY];
+        });
+
+        canvas.addEventListener("mousemove", draw);
+        canvas.addEventListener("mouseup", () => (isDrawing = false));
+        canvas.addEventListener("mouseout", () => (isDrawing = false));
+    </script>
+</body>
+
+</html>

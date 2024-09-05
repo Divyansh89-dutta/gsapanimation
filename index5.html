@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/greensock@1.20.2/src/TweenMax.min.js"></script>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html, body {
+        width: 100%;
+        height: 100%;
+        background-color: rgb(96, 100, 100);
+    }
+    nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+    }
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 2rem;
+        border-top: 1px solid rgba(0, 0, 0, 0.25);
+    }
+    nav a, footer a {
+        text-decoration: none;
+        color: #f3cece;
+        font-family: 'gilroy';
+        padding: 0 1em;
+        font-size: larger;
+        font-weight: 500;
+    }
+    .logo a {
+        font-weight: 600;
+    }
+    .wrapper {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #svg {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+    }
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .text {
+        text-decoration: none;
+        font-family: "Confillia Bold", sans-serif;
+        font-size: 105px;
+        font-weight: bolder;
+        line-height: 105px;
+        color: #0f0f0f;
+        height: 105px;
+        overflow: hidden;
+        text-transform: uppercase;
+    }
+    div {
+        display: flex;
+    }
+    .text:hover .letter,
+    .text.play .letter {
+        transform: translateY(-100%);
+    }
+    .text .letter {
+        display: inline-block;
+        transition: cubic-bezier(0.19, 1, 0.22, 1) 1s;
+    }
+    .letter:nth-child(1) {
+        transition-delay: 0;
+    }
+    .letter:nth-child(2) {
+        transition-delay: 0.015s;
+    }
+    .letter:nth-child(3) {
+        transition-delay: 0.03s;
+    }
+    .letter:nth-child(4) {
+        transition-delay: 0.045s;
+    }
+    .letter:nth-child(5) {
+        transition-delay: 0.06s;
+    }
+    .letter:nth-child(6) {
+        transition-delay: 0.075s;
+    }
+    .letter:nth-child(7) {
+        transition-delay: 0.09s;
+    }
+    .letter:nth-child(8) {
+        transition-delay: 0.105s;
+    }
+    .letter:nth-child(9) {
+        transition-delay: 0.12s;
+    }
+    .letter:nth-child(10) {
+        transition-delay: 0.135s;
+    }
+    .letter:nth-child(11) {
+        transition-delay: 0.15s;
+    }
+    .letter:nth-child(12) {
+        transition-delay: 0.165s;
+    }
+</style>
+<body>
+    <nav>
+        <div class="logo">
+            <a href="#">Divyansh</a>
+        </div>
+        <div class="links">
+            <a href="#">Services</a>
+            <a href="#">Our Work</a>
+            <a href="#">About Us</a>
+            <a href="#">Insights</a>
+        </div>
+        <div class="contact">
+            <a href="#">Contact Us</a>
+        </div>
+    </nav>
+    <footer>
+        <div class="main">
+            <a href="mailto:divyanshduttaroy163@gmail.com">divyanshduttaroy163@gmail.com</a>
+        </div>
+        <div class="location">
+            <a href="#">Bhopal</a>
+        </div>
+    </footer>
+    <div class="wrapper">
+        <svg id="svg" viewBox="0 0 1000 1000">
+            <g id="left-eye">
+                <circle class="eye-outer" cx="400" cy="500" r="100" stroke="#0f0f0f" stroke-width="2" fill="#fff"/>
+                <circle class="eye-inner" cx="480" cy="500" r="20" stroke="#0f0f0f" stroke-width="2" fill="#fffff"/>
+            </g>
+            <g id="right-eye">
+                <circle class="eye-outer" cx="600" cy="500" r="100" stroke="#0f0f0f" stroke-width="2" fill="#fff"/>
+                <circle class="eye-inner" cx="680" cy="500" r="20" stroke="#0f0f0f" stroke-width="2" fill="#fffff"/>
+            </g>
+        </svg>
+        <div class="container">
+            <div>
+                <a href="#" class="text">Work Hard</a>
+            </div>
+            <div>
+                <a href="#" class="text">Every</a>
+                <a href="#" class="text">Day</a>
+            </div>
+            <div>
+                <a href="#" class="text">To Get What You Want</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        let elements = document.querySelectorAll('.text');
+        elements.forEach((element) => {
+            let innerText = element.innerText;
+            element.innerHTML = "";
+            let textContainer = document.createElement("div");
+            textContainer.classList.add("block");
+            for (let letter of innerText) {
+                let span = document.createElement("span");
+                span.innerText = letter.trim() == "" ? "\xa0" : letter;
+                span.classList.add("letter");
+                textContainer.appendChild(span);
+            }
+            element.appendChild(textContainer);
+            element.appendChild(textContainer.cloneNode(true));
+        });
+        elements.forEach((element) => {
+            element.addEventListener("mouseover", () => {
+                element.classList.add("play");
+            });
+            element.addEventListener("mouseout", () => {
+                element.classList.remove("play");
+            });
+        });
+        const svg = document.querySelector("#svg");
+        const mouse = svg.createSVGPoint();
+        const leftEye = createEye("#left-eye");
+        const rightEye = createEye("#right-eye");
+        let requestId = null;
+        window.addEventListener("mousemove", onMouseMove);
+        function onMouseMove(event) {
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+            if (!requestId) {
+                requestId = requestAnimationFrame(onFrame);
+            }
+        }
+        function onFrame() {
+            let point = mouse.matrixTransform(svg.getScreenCTM().inverse());
+            leftEye.rotateTo(point);
+            rightEye.rotateTo(point);
+            requestId = null;
+        }
+        function createEye(selector) {
+            const element = document.querySelector(selector);
+            TweenMax.set(element, {
+                transformOrigin: "center",
+            });
+            let bbox = element.getBBox();
+            let centerX = bbox.x + bbox.width / 2;
+            let centerY = bbox.y + bbox.height / 2;
+            function rotateTo(point) {
+                let dx = point.x - centerX;
+                let dy = point.y - centerY;
+                let angle = Math.atan2(dy, dx);
+                TweenMax.to(element, 0.3, {
+                    rotation: angle + "_rad_short",
+                });
+            }
+            return {
+                rotateTo,
+                element,
+            };
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:gilroy;
+}
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+body{
+    padding: 20px;
+    background-color: #000;
+}
+#box{
+    height: 20vw;
+    width: 20vw;
+    border-radius: 10px;
+    background-color: yellow;
+    position: absolute;
+}
+
+</style>
+<body>
+    <div id="box">
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        // GSAP - GreenSock Animation Platform 
+// JavaScript Animation Library 
+
+// gsap.to() make animation initial to final 
+
+gsap.to("#box",{
+    left:"70%",
+    duration:2,
+    delay:1,
+    rotate:360,
+    backgroundColor:"red"
+})
+
+// gsap.from() makes your animation final to initial 
+
+// gsap.from("#box",{
+//     left:"70%",
+//     duration:2,
+//     delay:1,
+//     rotate:360,
+//     backgroundColor:"red"
+// })
+
+// gsap.to("#box",{
+//     x:750,
+//     duration:2,
+//     delay:1,
+//     scale:0.5,
+//     repeat:-1,
+//     yoyo:true
+// })
+
+
+// gsap.from("#box",{
+//     y:200,
+//     opacity:0,
+//     duration:1,
+//     delay:1
+// })
+    </script>
+</body>
+</html>

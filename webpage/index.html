@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" />
+    <link rel="stylesheet" href="style4.css">
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#nav{
+    height:100px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    font-size: 20px;
+}
+#nav div{
+    display: flex;
+    gap: 40px;
+}
+#center{
+    height: calc(100% - 100px);
+    width:100% ;
+    display: flex;
+    align-items: flex-start;
+    justify-content:space-between ;
+    padding: 20px 60px;
+}
+#center #left{
+    height:100%;
+    width: 45%;
+}
+#center #right{
+    height: 100%;
+    width: 45%;
+    background-image: url(https://images.unsplash.com/photo-1520763185298-1b434c919102?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: center;
+}
+#center #left h1{
+    font-size: 80px;
+    line-height: 90px;
+    margin-bottom: 50px;
+}
+#center button{
+    padding: 20px 30px;
+    background-color: #00b4d0;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    font-size: 23px;
+}
+</style>
+<body>
+    <div id ="nav">
+      <h2>Sheriyans</h2>
+    <div>
+        <h3>About</h3>
+        <h3>services</h3>
+        <h3>work</h3>
+        <h3>contact</h3>
+        <h3>your account</h3>
+    </div>
+</div>
+
+<div id="center"> 
+    <div id="left">
+        <h1>Learn from Best People in World.</h1>
+        <button>Explore Courses</button>
+    </div>
+    <div id="right">
+
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" 
+integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" 
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        
+var tl = gsap.timeline()
+
+tl.from("#nav h2,#nav h3",{
+  y:-50,
+  duration:1,
+  delay:0.5,
+  opacity:0,
+  stagger:0.2
+})
+
+
+tl.from("#left h1",{
+  x:-400,
+  opacity:0,
+  duration:0.8
+})
+
+tl.from("#left button",{
+  opacity:0,
+  duration:0.6
+})
+
+tl.from("#right",{
+  opacity:0,
+  duration:0.5
+})
+
+    </script>
+</body>
+
+</html>

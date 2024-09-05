@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: "gliroy";
+        }
+        .logo {
+            position: fixed;
+            padding: 1.5rem;
+        }
+        .logo a {
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+        }
+        .sidebar {
+            width: 100vh;
+            height: max-content;
+            display: flex;
+            align-items: flex-start;
+            transform: rotate(-90deg) translate(-100%, 0);
+            transform-origin: left top;
+            padding: 1.5em 3em;
+        }
+        .sidebar > div:nth-child(1) {
+            flex: 2;
+        }
+        .sidebar > div:nth-child(2) {
+            flex: 2;
+            display: flex;
+            gap: 6em;
+        }
+        p#header {
+            text-transform: uppercase;
+            font-size: 7.5em;
+            line-height: 85%;
+            margin-bottom: 4rem;
+        }
+        .slider {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .slider-wrapper {
+            position: absolute;
+            top: 0;
+            width: 8000px;
+            padding: 0 600px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            gap: 100px;
+        }
+        .slide {
+            width: 400px;
+            height: 500px;
+            background: #e3e3e3;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <a href="#">Timmons Tiffon</a>
+    </div>
+    <div class="sidebar">
+        <div class="sidebar-item">
+            <p>Divyansh</p>
+        </div>
+        <div class="sidebar-item">
+            <p>/IUJHSD34</p>
+            <p>Scroll Experience</p>
+        </div>
+    </div> 
+    <div class="slider">
+        <div class="slider-wrapper">
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1510797215324-95aa89f43c33?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1444724334165-e7050f2229a1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGZvcmVzdHxlbnwwfDF8MHx8fDA%3D" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1503242464786-199ffb1dd8d9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGZvcmVzdHxlbnwwfDF8MHx8fDA%3D" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1527701963793-33e969bca5ee?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGZvcmVzdHxlbnwwfDF8MHx8fDA%3D" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1550100136-e092101726f4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGZvcmVzdHxlbnwwfDF8MHx8fDA%3D" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1507041957456-9c397ce39c97?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGZvcmVzdHxlbnwwfDF8MHx8fDA%3D" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1510248703225-7f7838dfd579?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGZvcmVzdHxlbnwwfDF8MHx8fDA%3D" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzB8fGZvcmVzdHxlbnwwfDF8MHx8fDA%3D" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1520052600632-67420194a58f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fGZvcmVzdHxlbnwwfDF8MHx8fDA%3D" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1562569517-22bcc82b5dd4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTJ8fGZvcmVzdHxlbnwwfDF8MHx8fDA%3D" alt="">
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1523293836414-f04e712e1f3b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fGZvcmVzdHxlbnwwfDF8MHx8fDA%3D" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <script>
+        let target = 0;
+        let current = 0;
+        const ease = 0.075;
+        const sliders = document.querySelectorAll(".slide");
+        const sliderWrapper = document.querySelector(".slider-wrapper");
+
+        let maxScroll = sliderWrapper.offsetWidth - window.innerWidth;
+
+        function lerp(start, end, factor) {
+            return start + (end - start) * factor;
+        }
+
+        function updateScaleAndPosition() {
+            sliders.forEach((slide) => {
+                const rect = slide.getBoundingClientRect();
+                const centerPosition = (rect.left + rect.right) / 2;
+                const distanceFromCenter = centerPosition - window.innerWidth / 2;
+                let scale, offsetX;
+                if (distanceFromCenter > 0) {
+                    scale = Math.min(1.75, 1 + distanceFromCenter / window.innerWidth);
+                    offsetX = (scale - 1) * 300;
+                } else {
+                    scale = Math.max(0.05, 1 - Math.abs(distanceFromCenter) / window.innerWidth);
+                    offsetX = 0;
+                }
+                gsap.set(slide, {
+                    scale: scale,
+                    x: offsetX
+                });
+            });
+        }
+
+        function update() {
+            current = lerp(current, target, ease);
+            gsap.set(".slider-wrapper", {
+                x: -current
+            });
+            updateScaleAndPosition();
+            requestAnimationFrame(update);
+        }
+
+        window.addEventListener("resize", () => {
+            maxScroll = sliderWrapper.offsetWidth - window.innerWidth;
+        });
+
+        window.addEventListener("wheel", (e) => {
+            target += e.deltaY;
+            target = Math.max(0, target);
+            target = Math.min(maxScroll, target);
+        });
+
+        update();
+    </script>
+</body>
+</html>

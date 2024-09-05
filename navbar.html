@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+   <style>
+    * {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html, body {
+    height:100%;
+    width:100%;
+}
+
+#main{
+    height: 100%;
+    width: 100%;
+    background-image: url(https://images.unsplash.com/photo-1628388657170-9fc47af83518?q=80&w=2002&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+    background-size: cover;
+    background-position: 50% 60%;
+}
+
+#full{
+    width: 100%;
+    transform: translateY(-100%);
+    background-color: rgba(106, 212, 238, 0.24);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    position: absolute;
+
+}
+
+#full h2{
+    margin-bottom: 10px;
+    font-size: 50px;
+    color: #0a0a0a;
+    font-weight: 300;
+}
+
+#nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 50px;
+    color: #050505;
+    font-size: 30px;
+}
+#full h4{
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    font-size: 40px;
+    color: #0d0d0d;
+}
+   </style>
+</head>
+<body>
+    <div id="main">
+        <div id="full">
+          <h2>About</h2>
+          <h2>Work</h2>
+          <h2>Services</h2>
+          <h2>Contact</h2>
+          <h4 class="close"><i class="ri-close-line"></i></h4>
+        </div>
+        <div id="nav">
+          <h2>Divyansh</h2>
+          <h5 id="menu"><i class="ri-menu-3-fill"></i></h5>
+        </div>
+      </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script>
+    var tl = gsap.timeline()
+
+tl.to("#full",{
+  transform:"translateY(0)",
+  duration:0.6,
+  ease:"power1.out"
+})
+tl.from("#full h2",{
+  x:-80,
+  opacity:0,
+  stagger:0.2
+})
+
+tl.pause()
+
+document.querySelector("#menu").addEventListener("click",function(){
+  dr.play()
+})
+document.querySelector(".close").addEventListener("click",function(){
+  tdr.reverse()
+})
+   </script>
+</body>
+</html>

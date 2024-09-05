@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            background-color: #fff;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .item {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70px;
+            height: 100px;
+            background-color: #b0b0b0;
+            margin: 10px;
+            border-radius: 20px;
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+       <h1>Divyansh</h1>
+    </nav>
+    <div class="container">
+        <div class="gallery">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const items = document.querySelectorAll(".item");
+        const container = document.querySelector(".container");
+        const numberOfItems = items.length;
+        const angleIncrement = (2 * Math.PI) / numberOfItems;
+        const radius = 300;
+        let isGalleryOpen = false;
+        const centerX = container.offsetWidth / 2;
+        const centerY = container.offsetHeight / 2;
+        const tl = gsap.timeline();
+
+        const imageUrls = [
+            'https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmF0dXJlfGVufDB8MXwwfHx8MA%3D%3D',
+            'https://plus.unsplash.com/premium_photo-1675827055620-24d540e0892a?q=80&w=1944&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'https://images.unsplash.com/photo-1546514355-7fdc90ccbd03?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D',
+            'https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D',
+            'https://images.unsplash.com/photo-1508459855340-fb63ac591728?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D',
+            'https://plus.unsplash.com/premium_photo-1675433344518-21eb72dfc7a5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjV8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D',
+            'https://images.unsplash.com/photo-1507041957456-9c397ce39c97?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            'https://images.unsplash.com/photo-1541675154750-0444c7d51e8e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D',
+            'https://images.unsplash.com/photo-1567647753830-de3fe7ce9f28?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D',
+            'https://images.unsplash.com/photo-1615729947596-a598e5de0ab3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzR8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D',
+            'https://images.unsplash.com/photo-1553114836-026cecec9778?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDJ8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D',
+            'https://images.unsplash.com/photo-1472396961693-142e6e269027?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDN8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D',
+            'https://images.unsplash.com/photo-1501261379837-c3b516327829?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTF8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D',
+            'https://images.unsplash.com/photo-1420593248178-d88870618ca0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTR8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D',
+            'https://images.unsplash.com/photo-1535463731090-e34f4b5098c5?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjN8fG5hdHVyZXxlbnwwfDF8MHx8fDA%3D'
+        ];
+
+        items.forEach(function (item, index) {
+            const img = document.createElement('img');
+            img.src = imageUrls[index];
+            item.appendChild(img);
+            const angle = index * angleIncrement;
+            const x = centerX + Math.cos(angle) * radius;
+            const y = centerY + Math.sin(angle) * radius;
+            const initialRotation = (angle * 180 / Math.PI) - 90;
+            gsap.set(item, { scale: 0 });
+            tl.to(item, {
+                duration: 1,
+                scale: 1,
+                left: x + 'px',
+                top: y + 'px',
+                rotation: initialRotation,
+                delay: 1,
+                ease: "power1.out"
+            }, index * 0.1);
+
+            item.addEventListener('click', function () {
+                if (!isGalleryOpen) {
+                    isGalleryOpen = true;
+                    const duplicate = item.cloneNode(true);
+                    duplicate.style.position = 'absolute';
+                    container.appendChild(duplicate);
+                    gsap.to(Array.from(items).filter(i => i !== item), {
+                        duration: 0.5,
+                        scale: 0,
+                        ease: "power1.in",
+                        stagger: 0.05
+                    });
+                    const endRotation = initialRotation > 180 ? initialRotation - 360 : initialRotation;
+                    gsap.to([item, duplicate], {
+                        duration: 0.0001,
+                        rotation: endRotation,
+                        onComplete: function () {
+                            gsap.to([item, duplicate], {
+                                left: "50%",
+                                top: "50%",
+                                transform: "translate(-50%, -50%) scale(5)",
+                                duration: 1,
+                                ease: "power2.out",
+                                delay: 1.25
+                            });
+                        }
+                    });
+                    const closeGallery = function () {
+                        if (isGalleryOpen) {
+                            gsap.to([item, duplicate], {
+                                left: x + 'px',
+                                top: y + 'px',
+                                scale: 1,
+                                duration: 1,
+                                rotation: initialRotation,
+                                ease: "power2.in",
+                                onComplete: function () {
+                                    duplicate.remove();
+                                    gsap.to(items, {
+                                        scale: 1,
+                                        duration: 1,
+                                        stagger: 0.05,
+                                        ease: "power2.out"
+                                    });
+                                    isGalleryOpen = false;
+                                }
+                            });
+                        }
+                    };
+                    item.addEventListener('click', closeGallery);
+                    duplicate.addEventListener('click', closeGallery);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
